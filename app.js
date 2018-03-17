@@ -312,9 +312,9 @@ function ensureToken(req, res, next) {
 }
 //##################### Middleware END
 
-app.listen(3000, function (err) {
+app.listen(80, function (err) {
     if (err) {
         throw err;
     }
-    console.log("server listening on port 3000");
+    console.log("server listening on port 80");
 });
