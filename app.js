@@ -13,6 +13,7 @@ Thread = require("./models/thread");
 User = require("./models/user");
 Comment = require("./models/comment");
 Board = require("./models/board");
+
 //Mongoose setup
 //mongoose.connect('mongodb://yannik:roflk0wski@ds251727.mlab.com:51727/my_task_list_yannik');
 mongoose.connect('mongodb://localhost:27017/rclone');
