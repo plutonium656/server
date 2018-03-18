@@ -6,7 +6,10 @@ var express = require("express"),
     cors = require("cors"),
     secretKey = secretKey;
 
+const PORT = 3000;
+
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 //MODELS
 Thread = require("./models/thread");
@@ -312,9 +315,9 @@ function ensureToken(req, res, next) {
 }
 //##################### Middleware END
 
-app.listen(80, function (err) {
+app.listen(PORT, function (err) {
     if (err) {
         throw err;
     }
-    console.log("server listening on port 80");
+    console.log("server listening on port "+PORT);
 });
