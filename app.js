@@ -4,7 +4,7 @@ var express = require("express"),
     mongoose = require("mongoose"),
     jwt = require("jsonwebtoken"),
     cors = require("cors"),
-    secretKey = secretKey;
+    secretKey = 'my_secret_key';
 
 const PORT = 3000;
 
