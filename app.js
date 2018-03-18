@@ -101,7 +101,7 @@ app.post('/api/b/new', ensureToken,(req,res)=>{
                 name:req.body.name,
                 description:req.body.description,
                 owner:req.body.ownerId,
-                moderators:[body.ownerId]
+                moderators:[req.body.ownerId]
             })
             newBoard.save((err,_board) => {
                 if(err){
