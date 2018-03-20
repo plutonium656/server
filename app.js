@@ -31,7 +31,9 @@ app.post('/api/login', function (req, res) {
     User.findOne({
         username: req.body.username
     }, function (err, user) {
-        if (err) throw err;
+        if (err){
+            res.json(err);
+        }
 
         user.comparePassword(req.body.password, function (err, isMatch) {
             if (err) throw err;
@@ -63,7 +65,7 @@ app.get('/api/authservice', ensureToken,(req,res) => {
     const userId = decoded.user._id;
     User.findOne({_id:userId}).then((err,user) => {
         if(err){
-            res.send(err);
+            res.json(err);
         }
         res.json(user);
     });
@@ -78,7 +80,9 @@ app.post('/api/user', function (req, res) {
         username: req.body.username
     });
     newUser.save(function (err, _user) {
-        if (err) throw err;
+        if (err) {
+            res.json(err);
+        }
         res.json(_user);
     });
 });
