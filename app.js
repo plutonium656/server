@@ -36,7 +36,9 @@ app.post('/api/login', function (req, res) {
         }
 
         user.comparePassword(req.body.password, function (err, isMatch) {
-            if (err) throw err;
+            if (err){
+                res.json(err);
+            }
 
             if (isMatch) {
                 const token = jwt.sign({
