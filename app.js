@@ -16,12 +16,13 @@ Thread = require("./models/thread");
 User = require("./models/user");
 Comment = require("./models/comment");
 Board = require("./models/board");
+Apicall = require("./models/apicall");
 
 //Mongoose setup
 //mongoose.connect('mongodb://yannik:roflk0wski@ds251727.mlab.com:51727/my_task_list_yannik');
 mongoose.connect('mongodb://localhost:27017/rclone');
 var db = mongoose.connection;
-
+app.use(logApiCall);
 //useless index route lol
 app.get('/', function (req, res) {
     res.send('Nothing to see here =)');
@@ -318,6 +319,22 @@ function ensureToken(req, res, next) {
     } else {
         res.sendStatus(403);
     }
+}
+
+function logApiCall(req,res,next){
+    console.log("new call added!");
+    console.log(req);
+    const apicall = new Apicall({
+        route:req.headers.host,
+        ip:req.ip,
+        useragent:req.headers['user-agent']
+    });
+    apicall.save((err) => {
+        if(err){
+            console.log(err);
+        }
+        next();
+    })
 }
 //##################### Middleware END
 
