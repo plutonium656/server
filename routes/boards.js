@@ -3,6 +3,7 @@ var router = express.Router();
 var ensureToken = require("../middelware/authorization");
 var logApiCall = require("../middelware/logRequest");
 var jwt = require("jsonwebtoken");
+var secretKey = 'my_secret_key';
 
 router.get('/api/b/',(req,res) => {
     Board.find((err,_boards) => {

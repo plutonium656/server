@@ -2,8 +2,8 @@ var express = require("express"),
     app = express(),
     bodyParser = require("body-parser"),
     mongoose = require("mongoose"),
-    cors = require("cors"),
-    secretKey = 'my_secret_key';
+    cors = require("cors")
+    
 
 const PORT = 3000;
 
