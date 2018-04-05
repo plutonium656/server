@@ -1,6 +1,5 @@
 module.exports = function logApiCall(req,res,next){
-    console.log("new call added!");
-    console.log(req);
+    console.log("call registered from "+req.ip);
     const apicall = new Apicall({
         route:req.headers.host,
         ip:req.ip,
