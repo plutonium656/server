@@ -22,10 +22,12 @@ Apicall = require("./models/apicall");
 //mongoose.connect('mongodb://yannik:roflk0wski@ds251727.mlab.com:51727/my_task_list_yannik');
 mongoose.connect('mongodb://localhost:27017/rclone');
 var db = mongoose.connection;
-app.use(logApiCall);
+
 //Middleware-SETUP
 var ensureToken = require("./middelware/authorization");
 var logApiCall = require("./middelware/logRequest");
+
+app.use(logApiCall);
 //########### ROUTER-SETUP
 var boards = require("./routes/boards");
 var comments = require("./routes/comments");
