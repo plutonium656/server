@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var ensureToken = require("../middelware/authorization");
+var logApiCall = require("../middelware/logRequest");
 var jwt = require("jsonwebtoken");
 
 Thread = require("../models/thread");

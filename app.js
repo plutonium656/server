@@ -25,7 +25,7 @@ var db = mongoose.connection;
 app.use(logApiCall);
 //Middleware-SETUP
 var ensureToken = require("./middelware/authorization");
-
+var logApiCall = require("./middelware/logRequest");
 //########### ROUTER-SETUP
 var boards = require("./routes/boards");
 var comments = require("./routes/comments");
@@ -39,24 +39,10 @@ app.use("/",users);
 
 //useless index route lol
 app.get('/', function (req, res) {
-    res.send('Nothing to see here =)');
+    res.send('Contact site owner for api usage!');
 });
 
-function logApiCall(req,res,next){
-    console.log("new call added!");
-    console.log(req);
-    const apicall = new Apicall({
-        route:req.headers.host,
-        ip:req.ip,
-        useragent:req.headers['user-agent']
-    });
-    apicall.save((err) => {
-        if(err){
-            console.log(err);
-        }
-        next();
-    })
-}
+
 //##################### Middleware END
 
 app.listen(PORT, function (err) {
